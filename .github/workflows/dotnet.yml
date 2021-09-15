@@ -25,7 +25,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
     - name: dotnet build and publish
-      run: dotnet publish -c Release -o './myapp' 
+      run: dotnet publish ActionDemo/ActionDemo.proj -c Release -o './myapp' 
       
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
