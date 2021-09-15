@@ -26,7 +26,7 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: dotnet publish
-      run: dotnet publish -c Release -r linux-x64 -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
@@ -52,5 +52,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'GitHubDemo'
+        slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_41f61abde25046abb1e57c964865f51e }}
         package: .
