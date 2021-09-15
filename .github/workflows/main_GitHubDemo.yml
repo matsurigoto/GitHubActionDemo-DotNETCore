@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - GitHubDemo
 on:
   push:
     branches:
-      - test
+      - main
   workflow_dispatch:
 
 jobs:
@@ -25,10 +25,8 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
 
-
-
     - name: dotnet publish
-      run: dotnet publish -c Release -r linux-x64 -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish ActionDemo\ActionDemo.csproj -c Release -r -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: echo
       run: echo ${{env.DOTNET_ROOT}}
