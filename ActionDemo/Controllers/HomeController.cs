@@ -20,8 +20,6 @@ namespace ActionDemo.Controllers
 
         public IActionResult Index()
         {
-            var azure_devops_personal_access_token = "123456789";
-            var Token = "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";
             return View();
         }
 
