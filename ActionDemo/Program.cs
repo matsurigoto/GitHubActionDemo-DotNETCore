@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace ActionDemo
 {
     
-/// <summary>
-/// 
-/// </summary>
     public class Program
-    {
+    {/// <summary>
+    /// 1235
+    /// </summary>
+    /// <param name="args"></param>
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
