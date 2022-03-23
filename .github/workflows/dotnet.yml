@@ -30,6 +30,6 @@ jobs:
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
       with: 
-        app-name: 'GitHubDemo' 
+        app-name: 'GitHubDemo2' 
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F1CF479424034909AACE4D2137B73D44  }}
         package: './myapp'
