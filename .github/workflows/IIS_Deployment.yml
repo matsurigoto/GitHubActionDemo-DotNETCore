@@ -43,6 +43,6 @@ jobs:
         
     - name: Deploy to IIS
       run: |
-        iisreset /stop
+        Stop-Website dotnetcore-webapp
         Copy-Item . C:/inetpub/wwwroot/dotnetcore-webapp -Recurse -Force
-        iisreset /start
+         start-Website dotnetcore-webapp
