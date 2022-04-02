@@ -25,9 +25,6 @@ jobs:
     - name: dotnet publish
       run: dotnet publish ActionDemo/ActionDemo.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-    - name: echo
-      run: echo ${{env.DOTNET_ROOT}}
-
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
