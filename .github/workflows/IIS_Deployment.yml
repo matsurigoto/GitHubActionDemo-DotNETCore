@@ -45,4 +45,4 @@ jobs:
       run: |
         Stop-Website dotnetcore-webapp
         Copy-Item . C:/inetpub/wwwroot/dotnetcore-webapp -Recurse -Force
-         start-Website dotnetcore-webapp
+       start-Website dotnetcore-webapp
