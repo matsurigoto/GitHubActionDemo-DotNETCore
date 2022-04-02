@@ -1,0 +1,51 @@
+name:  Build and deploy ASP.Net Core app to IIS - GitHubDemo
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.x'
+        include-prerelease: true
+
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+
+    - name: dotnet publish
+      run: dotnet publish ActionDemo/ActionDemo.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+
+    - name: echo
+      run: echo ${{env.DOTNET_ROOT}}
+
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: .net-app
+        path: ${{env.DOTNET_ROOT}}/myapp
+
+  deploy:
+    runs-on: self-hosted
+    needs: build
+
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v2
+      with:
+        name: .net-app
+        
+    - name: Deploy to IIS
+      run: |
+        iisreset /stop
+        Copy-Item . C:/inetpub/wwwroot/dotnetcore-webapp -Recurse -Force
+        iisreset /start
