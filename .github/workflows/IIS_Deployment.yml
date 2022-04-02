@@ -42,8 +42,8 @@ jobs:
         name: .net-app
         
     - name: Deploy to IIS
+      shell: cmd
       run: |
-        Import-Module -SkipEditionCheck IISAdministration
-        Stop-Website -Name "dotnetcore-webapp"
-        Copy-Item . C:/inetpub/wwwroot/dotnetcore-webapp -Recurse -Force
-        Start-Website -Name "dotnetcore-webapp"
+        %windir%\system32\inetsrv\appcmd stop sites dotnetcore-webapp
+        xcopy . C:/inetpub/wwwroot/dotnetcore-webapp /s /e 
+        %windir%\system32\inetsrv\appcmd start sites dotnetcore-webapp
