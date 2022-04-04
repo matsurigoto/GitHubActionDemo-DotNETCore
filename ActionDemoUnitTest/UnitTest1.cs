@@ -14,6 +14,5 @@ namespace ActionDemoUnitTest
             var actual = a + b;
             Assert.AreEqual(expected, actual);
         }
-
     }
 }
